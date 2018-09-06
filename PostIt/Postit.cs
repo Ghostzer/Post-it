@@ -82,6 +82,8 @@ namespace PostIt
             TxtContenu.MouseHover += AfficherScroll;
             TxtContenu.MouseLeave += CacherScroll;
 
+            //test
+
             void AfficherScroll(object sender, EventArgs e)
             {
                 TxtContenu.ScrollBars = RichTextBoxScrollBars.Vertical;
