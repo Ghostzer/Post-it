@@ -59,7 +59,6 @@ namespace PostIt
             TxtContenu.BorderStyle = BorderStyle.None;
             TxtContenu.Text = this._contenu;
             TxtContenu.Dock = DockStyle.Fill;
-           // TxtContenu.ReadOnly = true;
             TxtContenu.Font = new Font("Tahoma", TxtContenu.Font.Size);
             TxtContenu.Font = new Font(TxtContenu.Font.FontFamily, 16);
             if (_color == "" || _color == null)
@@ -90,30 +89,6 @@ namespace PostIt
             {
                 TxtContenu.ScrollBars = RichTextBoxScrollBars.None;
             }
-
-            //Sert à cacher la barre de scroll...
-            //Si j'active ça, il faudrai ajouter des events scrollUp, scrollDown pour défiler le texte...
-            //test fonction, bof... à revoir
-            //TxtContenu.ScrollBars = RichTextBoxScrollBars.None;
-            //TxtContenu.MouseWheel += new MouseEventHandler(richTextBox1_MouseWheel);
-            //void richTextBox1_MouseWheel(object sender, MouseEventArgs e)
-            //{
-            //    if (e.Delta > 0)
-            //    {
-            //        //Handle mouse move upwards
-            //        if (TxtContenu.SelectionStart > 10)
-            //        {
-            //            TxtContenu.SelectionStart -= 10;
-            //            TxtContenu.ScrollToCaret();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        //Mouse move downwards.
-            //        TxtContenu.SelectionStart += 10;
-            //        TxtContenu.ScrollToCaret();
-            //    }
-            //}
 
             //Ajoute un padding de 10
             genForm.Padding = new Padding(10);
@@ -176,13 +151,6 @@ namespace PostIt
                
                 
             };
-
-            //Ajout bouton SAVE
-            //ToolStripItem itemSave = clickMenu.Items.Add("Save");
-            //itemSave.Click += (_, args) =>
-            //{
-            //    UpdatePos(_id, genForm.Location.X, genForm.Location.Y);
-            //};
 
             ToolStripItem itemChangecolor = clickMenu.Items.Add("Changer la couleur");
             itemChangecolor.Click += (_, args) =>
@@ -260,8 +228,8 @@ namespace PostIt
 
 
 
-
-            private Color UpdateColorForm(int id)
+        // Retourne la couleur inscrite dans le xml
+        private Color UpdateColorForm(int id)
         {
             _id = id;
             string recup = "";
@@ -278,7 +246,6 @@ namespace PostIt
                 }
             }
                     return Color.FromName(recup);
-
 
         }
 
@@ -371,15 +338,6 @@ namespace PostIt
             id.SetAttribute("posY", _posY.ToString());
             id.SetAttribute("color", _color.ToString());
 
-            //XmlNode node = doc.CreateNode(XmlNodeType.Element, "postit", null);
-            //XmlElement id = doc.CreateElement("id");
-            //id.SetAttribute("userName", "Tushar");
-            //XmlNode nodeUrl = doc.CreateElement("contenu");
-            //nodeUrl.InnerText = _contenu;
-
-            //root.AppendChild(id);
-            //root.AppendChild(nodeTitle);
-            //root.AppendChild(nodeUrl);
             doc.DocumentElement.AppendChild(id);
             doc.Save(filename);
         }
