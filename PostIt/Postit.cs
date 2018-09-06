@@ -19,7 +19,6 @@ namespace PostIt
     {
 
         public int _id { get; set; }
-        public string _titre { get; set; }
         public string _contenu { get; set; }
         public int _posX { get; set; }
         public int _posY { get; set; }
@@ -367,7 +366,6 @@ namespace PostIt
             //XmlElement root = doc.CreateElement("postit");
             XmlElement id = doc.CreateElement("postit");
             id.SetAttribute("id", _id.ToString());
-            //id.SetAttribute("titre", _titre);
             id.SetAttribute("contenu", _contenu);
             id.SetAttribute("posX", _posX.ToString());
             id.SetAttribute("posY", _posY.ToString());
@@ -376,8 +374,6 @@ namespace PostIt
             //XmlNode node = doc.CreateNode(XmlNodeType.Element, "postit", null);
             //XmlElement id = doc.CreateElement("id");
             //id.SetAttribute("userName", "Tushar");
-            //XmlNode nodeTitle = doc.CreateElement("titre");
-            //nodeTitle.InnerText = _titre;
             //XmlNode nodeUrl = doc.CreateElement("contenu");
             //nodeUrl.InnerText = _contenu;
 

@@ -45,7 +45,6 @@ namespace PostIt
                 if (node.Attributes != null)
                 {
                     int id = Convert.ToInt32(node.Attributes["id"].Value);
-                    //postit._titre = node.Attributes["titre"].Value;
                     string contenu = node.Attributes["contenu"].Value;
                     int posX = Convert.ToInt32(node.Attributes["posX"].Value);
                     int posY = Convert.ToInt32(node.Attributes["posY"].Value);
@@ -66,7 +65,6 @@ namespace PostIt
             {
                 if (node.Attributes["id"].Value == id.ToString())
                 {
-                    //postit._titre = node.Attributes["titre"].Value;
                     string contenu = node.Attributes["contenu"].Value;
                     int posX = Convert.ToInt32(node.Attributes["posX"].Value);
                     int posY = Convert.ToInt32(node.Attributes["posY"].Value);
