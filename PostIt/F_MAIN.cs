@@ -96,7 +96,7 @@ namespace PostIt
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Save les postit
+            //Todo save les postit avant de quitter
             Application.Exit();
         }
 
@@ -104,14 +104,6 @@ namespace PostIt
         {
             Postit postit = new Postit(0);
             postit.Init();
-            //F_ADD_NOTE add = new F_ADD_NOTE();
-            //add.ShowDialog();
-        }
-
-        private void testToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            F_ADD_NOTE add = new F_ADD_NOTE();
-            add.ShowDialog();
         }
 
         private void F_MAIN_FormClosing(object sender, FormClosingEventArgs e)
