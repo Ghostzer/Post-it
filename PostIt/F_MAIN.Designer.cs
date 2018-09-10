@@ -97,8 +97,8 @@
             this.Text = "À propos";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.F_MAIN_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
+            this.Load += new System.EventHandler(this.F_MAIN_Load);
+            this.Resize += new System.EventHandler(this.F_MAIN_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

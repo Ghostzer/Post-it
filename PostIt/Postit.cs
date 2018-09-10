@@ -23,16 +23,18 @@ namespace PostIt
         public int _posX { get; set; }
         public int _posY { get; set; }
         private string _color { get; set; }
+        private double _opacity { get; set; }
         private bool newPostit;
 
         //Const pour load les post-it déjà existant
-        public Postit(int id, string contenu, int posX, int posY, string color)
+        public Postit(int id, string contenu, int posX, int posY, string color, double opacity)
         {
             this._id = id;
             this._contenu = contenu;
             this._posX = posX;
             this._posY = posY;
             this._color = color;
+            this._opacity = opacity;
         }
         //Const pour nouveau postit
         public Postit(int id)
@@ -46,6 +48,7 @@ namespace PostIt
             if (_id == 0)
             {
                 newPostit = true;
+                _opacity = 10;
             }
 
 
@@ -53,6 +56,7 @@ namespace PostIt
             Form genForm = new Form();
             genForm.Size = new Size(240, 240);
             genForm.ShowInTaskbar = false;
+            genForm.Opacity = _opacity;
 
             //Add contenu
             RichTextBox TxtContenu = new RichTextBox();
@@ -145,7 +149,7 @@ namespace PostIt
                 DialogResult result = MessageBox.Show("Etes-vous certain de vouloir supprimer ce post-it ?", "Suppression...", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    SupprimerPostit(_id.ToString());
+                    DeletePostItToXml(_id.ToString());
                     genForm.Close();
                 }
                
@@ -157,7 +161,7 @@ namespace PostIt
             {
 
                 UpdateXml(_id, TxtContenu.Text);
-                ChangeColor color = new ChangeColor();
+                F_CHANGE_COLOR color = new F_CHANGE_COLOR(genForm, TxtContenu, _opacity);
                 color.idPostit = _id;
                 color.ShowDialog();
                 genForm.BackColor = UpdateColorForm(_id);
@@ -185,7 +189,7 @@ namespace PostIt
             {
 
                 generateId();
-                AjouterXml();
+                AddPostItToXml();
                 genForm.StartPosition = FormStartPosition.CenterParent;
 
             }
@@ -229,7 +233,7 @@ namespace PostIt
 
 
         // Retourne la couleur inscrite dans le xml
-        private Color UpdateColorForm(int id)
+        public Color UpdateColorForm(int id)
         {
             _id = id;
             string recup = "";
@@ -242,17 +246,17 @@ namespace PostIt
             {
                 if ((ie.Current as XmlNode).Attributes["id"].Value == _id.ToString())
                 {
-                    recup = (ie.Current as XmlNode).Attributes["color"].Value; 
+                    recup = (ie.Current as XmlNode).Attributes["color"].Value;
                 }
             }
-                    return Color.FromName(recup);
+            return Color.FromName(recup);
 
         }
 
 
 
 
-        public void SupprimerPostit(string id)
+        public void DeletePostItToXml(string id)
         {
             XDocument doc = XDocument.Load(@"conf.xml");
             var q = from node in doc.Descendants("postit")
@@ -324,7 +328,7 @@ namespace PostIt
 
 
 
-        public void AjouterXml()
+        public void AddPostItToXml()
         {
             string filename = @"conf.xml";
             XmlDocument doc = new XmlDocument();
@@ -337,6 +341,7 @@ namespace PostIt
             id.SetAttribute("posX", _posX.ToString());
             id.SetAttribute("posY", _posY.ToString());
             id.SetAttribute("color", _color.ToString());
+            id.SetAttribute("opacity", "10");
 
             doc.DocumentElement.AppendChild(id);
             doc.Save(filename);

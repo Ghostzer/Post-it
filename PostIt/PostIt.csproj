@@ -69,11 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeColor.cs">
+    <Compile Include="F_CHANGE_COLOR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeColor.Designer.cs">
-      <DependentUpon>ChangeColor.cs</DependentUpon>
+    <Compile Include="F_CHANGE_COLOR.Designer.cs">
+      <DependentUpon>F_CHANGE_COLOR.cs</DependentUpon>
     </Compile>
     <Compile Include="F_MAIN.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
     <Compile Include="Postit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChangeColor.resx">
-      <DependentUpon>ChangeColor.cs</DependentUpon>
+    <EmbeddedResource Include="F_CHANGE_COLOR.resx">
+      <DependentUpon>F_CHANGE_COLOR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_MAIN.resx">
       <DependentUpon>F_MAIN.cs</DependentUpon>

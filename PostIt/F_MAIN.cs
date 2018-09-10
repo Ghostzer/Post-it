@@ -24,7 +24,7 @@ namespace PostIt
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void F_MAIN_Load(object sender, EventArgs e)
         {
 
             // OK
@@ -49,34 +49,36 @@ namespace PostIt
                     int posX = Convert.ToInt32(node.Attributes["posX"].Value);
                     int posY = Convert.ToInt32(node.Attributes["posY"].Value);
                     string color = node.Attributes["color"].Value;
-                    Postit postit = new Postit(id, contenu, posX, posY, color);
+                    double opacity = Convert.ToDouble(node.Attributes["opacity"].Value);
+                    Postit postit = new Postit(id, contenu, posX, posY, color, opacity);
                     postit.Init();
                 }
             }
         }
 
 
-        public void RefreshById(int id)
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("conf.xml");
+        //public void RefreshById(int id)
+        //{
+        //    XmlDocument xmlDoc = new XmlDocument();
+        //    xmlDoc.Load("conf.xml");
 
-            foreach (XmlNode node in xmlDoc.SelectNodes("//postit"))
-            {
-                if (node.Attributes["id"].Value == id.ToString())
-                {
-                    string contenu = node.Attributes["contenu"].Value;
-                    int posX = Convert.ToInt32(node.Attributes["posX"].Value);
-                    int posY = Convert.ToInt32(node.Attributes["posY"].Value);
-                    string color = node.Attributes["color"].Value;
-                    Postit postit = new Postit(id, contenu, posX, posY, color);
-                    postit.Init();
-                }
-            }
+        //    foreach (XmlNode node in xmlDoc.SelectNodes("//postit"))
+        //    {
+        //        if (node.Attributes["id"].Value == id.ToString())
+        //        {
+        //            string contenu = node.Attributes["contenu"].Value;
+        //            int posX = Convert.ToInt32(node.Attributes["posX"].Value);
+        //            int posY = Convert.ToInt32(node.Attributes["posY"].Value);
+        //            string color = node.Attributes["color"].Value;
+        //            double opacity = Convert.ToDouble(node.Attributes["opacity"].Value);
+        //            Postit postit = new Postit(id, contenu, posX, posY, color, opacity);
+        //            postit.Init();
+        //        }
+        //    }
             
-        }
+        //}
 
-        private void Form1_Resize(object sender, EventArgs e)
+        private void F_MAIN_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
             {

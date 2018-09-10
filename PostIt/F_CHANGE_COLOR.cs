@@ -12,19 +12,39 @@ using System.Xml;
 
 namespace PostIt
 {
-    public partial class ChangeColor : Form
+    public partial class F_CHANGE_COLOR : Form
     {
 
         public int idPostit;
+        private Form nomForm;
+        private Panel panelPostit;
+        private double nOpacity;
+        private RichTextBox nomContenu;
 
-        public ChangeColor()
+        public F_CHANGE_COLOR()
         {
+            InitializeComponent();
+        }
+
+        public F_CHANGE_COLOR(Form nomDeLaForm, double opacity) 
+        {
+            nomForm = nomDeLaForm;
+            nOpacity = opacity;
+            InitializeComponent();
+        }
+
+        public F_CHANGE_COLOR(Form nomDeLaForm, RichTextBox contenu, double opacity)
+        {
+            nomForm = nomDeLaForm;
+            nOpacity = opacity;
+            nomContenu = contenu;
             InitializeComponent();
         }
 
         private void UpdateColor(int id, Panel pan)
         {
             idPostit = id;
+            panelPostit = pan;
             XmlDocument doc = new XmlDocument();
             string path = @"conf.xml";
             doc.Load(path);
@@ -35,11 +55,13 @@ namespace PostIt
                 if ((ie.Current as XmlNode).Attributes["id"].Value == idPostit.ToString())
                 {
                     (ie.Current as XmlNode).Attributes["color"].Value = pan.BackColor.Name;
+                    (ie.Current as XmlNode).Attributes["opacity"].Value = nomForm.Opacity.ToString();
                 }
             }
 
             doc.Save(path);
-            this.Close();
+
+            //this.Close();
         }
 
         private void pan_Khaki_Click(object sender, EventArgs e)
@@ -62,5 +84,21 @@ namespace PostIt
             UpdateColor(idPostit, pan_Violet);
         }
 
+        private void trackBar1_ValueChanged_1(object sender, EventArgs e)
+        {
+            nomForm.Opacity = ((double)(Tb_opacity.Value) / 10.0);
+            Lbl_opacity.Text = "Opacity : " + nomForm.Opacity.ToString();
+        }
+
+        private void F_CHANGE_COLOR_Load(object sender, EventArgs e)
+        {
+            Lbl_opacity.Text = "Opacity : " + nOpacity;
+            Tb_opacity.Value = Convert.ToInt32(nOpacity * 10);
+        }
+
+        private void Btn_closeChangeColor_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
