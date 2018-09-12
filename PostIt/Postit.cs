@@ -161,7 +161,7 @@ namespace PostIt
             {
 
                 UpdateXml(_id, TxtContenu.Text);
-                F_CHANGE_COLOR color = new F_CHANGE_COLOR(genForm, TxtContenu, _opacity);
+                F_CHANGE_COLOR color = new F_CHANGE_COLOR(genForm, UpdateColorForm(_id), _opacity);
                 color.idPostit = _id;
                 color.ShowDialog();
                 genForm.BackColor = UpdateColorForm(_id);

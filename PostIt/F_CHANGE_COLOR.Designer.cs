@@ -83,7 +83,7 @@
             this.Btn_closeChangeColor.Name = "Btn_closeChangeColor";
             this.Btn_closeChangeColor.Size = new System.Drawing.Size(75, 23);
             this.Btn_closeChangeColor.TabIndex = 11;
-            this.Btn_closeChangeColor.Text = "Fermer";
+            this.Btn_closeChangeColor.Text = "Appliquer";
             this.Btn_closeChangeColor.UseVisualStyleBackColor = true;
             this.Btn_closeChangeColor.Click += new System.EventHandler(this.Btn_closeChangeColor_Click);
             // 

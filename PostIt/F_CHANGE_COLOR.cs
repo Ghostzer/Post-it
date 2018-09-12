@@ -19,7 +19,7 @@ namespace PostIt
         private Form nomForm;
         private Panel panelPostit;
         private double nOpacity;
-        private RichTextBox nomContenu;
+        private Color nomColor;
 
         public F_CHANGE_COLOR()
         {
@@ -33,11 +33,11 @@ namespace PostIt
             InitializeComponent();
         }
 
-        public F_CHANGE_COLOR(Form nomDeLaForm, RichTextBox contenu, double opacity)
+        public F_CHANGE_COLOR(Form nomDeLaForm, Color color, double opacity)
         {
             nomForm = nomDeLaForm;
             nOpacity = opacity;
-            nomContenu = contenu;
+            nomColor = color;
             InitializeComponent();
         }
 

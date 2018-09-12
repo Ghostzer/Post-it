@@ -37,23 +37,41 @@ namespace PostIt
 
         public void RefreshPostit()
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("conf.xml");
 
-            foreach (XmlNode node in xmlDoc.SelectNodes("//postit"))
+
+            if (!File.Exists(@"conf.xml"))
             {
-                if (node.Attributes != null)
+
+                new XDocument(
+                    new XElement("conf"
+                    )
+                )
+                .Save("conf.xml");
+
+            } else
+            {
+
+                XmlDocument doc = new XmlDocument();
+                doc.Load("conf.xml");
+
+                foreach (XmlNode node in doc.SelectNodes("//postit"))
                 {
-                    int id = Convert.ToInt32(node.Attributes["id"].Value);
-                    string contenu = node.Attributes["contenu"].Value;
-                    int posX = Convert.ToInt32(node.Attributes["posX"].Value);
-                    int posY = Convert.ToInt32(node.Attributes["posY"].Value);
-                    string color = node.Attributes["color"].Value;
-                    double opacity = Convert.ToDouble(node.Attributes["opacity"].Value);
-                    Postit postit = new Postit(id, contenu, posX, posY, color, opacity);
-                    postit.Init();
+                    if (node.Attributes != null)
+                    {
+                        int id = Convert.ToInt32(node.Attributes["id"].Value);
+                        string contenu = node.Attributes["contenu"].Value;
+                        int posX = Convert.ToInt32(node.Attributes["posX"].Value);
+                        int posY = Convert.ToInt32(node.Attributes["posY"].Value);
+                        string color = node.Attributes["color"].Value;
+                        double opacity = Convert.ToDouble(node.Attributes["opacity"].Value);
+                        Postit postit = new Postit(id, contenu, posX, posY, color, opacity);
+                        postit.Init();
+                    }
                 }
+
             }
+
+            
         }
 
 
