@@ -48,7 +48,7 @@ namespace PostIt
             if (_id == 0)
             {
                 newPostit = true;
-                _opacity = 10;
+                _opacity = 1;
             }
 
 
