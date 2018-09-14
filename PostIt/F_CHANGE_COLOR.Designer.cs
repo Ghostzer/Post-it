@@ -32,8 +32,8 @@
             this.Lbl_opacity = new System.Windows.Forms.Label();
             this.Tb_opacity = new System.Windows.Forms.TrackBar();
             this.Btn_closeChangeColor = new System.Windows.Forms.Button();
-            this.pan_Violet = new System.Windows.Forms.Panel();
-            this.pan_GreenYellow = new System.Windows.Forms.Panel();
+            this.pan_Thistle = new System.Windows.Forms.Panel();
+            this.pan_LightGreen = new System.Windows.Forms.Panel();
             this.pan_LigthSkyBlue = new System.Windows.Forms.Panel();
             this.pan_Khaki = new System.Windows.Forms.Panel();
             this.panel_main.SuspendLayout();
@@ -45,8 +45,8 @@
             this.panel_main.Controls.Add(this.Lbl_opacity);
             this.panel_main.Controls.Add(this.Tb_opacity);
             this.panel_main.Controls.Add(this.Btn_closeChangeColor);
-            this.panel_main.Controls.Add(this.pan_Violet);
-            this.panel_main.Controls.Add(this.pan_GreenYellow);
+            this.panel_main.Controls.Add(this.pan_Thistle);
+            this.panel_main.Controls.Add(this.pan_LightGreen);
             this.panel_main.Controls.Add(this.pan_LigthSkyBlue);
             this.panel_main.Controls.Add(this.pan_Khaki);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -87,30 +87,31 @@
             this.Btn_closeChangeColor.UseVisualStyleBackColor = true;
             this.Btn_closeChangeColor.Click += new System.EventHandler(this.Btn_closeChangeColor_Click);
             // 
-            // pan_Violet
+            // pan_Thistle
             // 
-            this.pan_Violet.BackColor = System.Drawing.Color.Thistle;
-            this.pan_Violet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pan_Violet.Location = new System.Drawing.Point(231, 26);
-            this.pan_Violet.Name = "pan_Violet";
-            this.pan_Violet.Size = new System.Drawing.Size(50, 50);
-            this.pan_Violet.TabIndex = 10;
-            this.pan_Violet.Click += new System.EventHandler(this.pan_Violet_Click);
+            this.pan_Thistle.BackColor = System.Drawing.Color.Thistle;
+            this.pan_Thistle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pan_Thistle.Location = new System.Drawing.Point(231, 26);
+            this.pan_Thistle.Name = "pan_Thistle";
+            this.pan_Thistle.Size = new System.Drawing.Size(50, 50);
+            this.pan_Thistle.TabIndex = 10;
+            this.pan_Thistle.Click += new System.EventHandler(this.pan_Thistle_Click);
             // 
-            // pan_GreenYellow
+            // pan_LightGreen
             // 
-            this.pan_GreenYellow.BackColor = System.Drawing.Color.LightGreen;
-            this.pan_GreenYellow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pan_GreenYellow.Location = new System.Drawing.Point(165, 26);
-            this.pan_GreenYellow.Name = "pan_GreenYellow";
-            this.pan_GreenYellow.Size = new System.Drawing.Size(50, 50);
-            this.pan_GreenYellow.TabIndex = 9;
-            this.pan_GreenYellow.Click += new System.EventHandler(this.pan_GreenYellow_Click);
+            this.pan_LightGreen.BackColor = System.Drawing.Color.LightGreen;
+            this.pan_LightGreen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pan_LightGreen.Location = new System.Drawing.Point(165, 26);
+            this.pan_LightGreen.Name = "pan_LightGreen";
+            this.pan_LightGreen.Size = new System.Drawing.Size(50, 50);
+            this.pan_LightGreen.TabIndex = 9;
+            this.pan_LightGreen.Click += new System.EventHandler(this.pan_LightGreen_Click);
             // 
             // pan_LigthSkyBlue
             // 
             this.pan_LigthSkyBlue.BackColor = System.Drawing.Color.LightSkyBlue;
             this.pan_LigthSkyBlue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pan_LigthSkyBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pan_LigthSkyBlue.Location = new System.Drawing.Point(95, 26);
             this.pan_LigthSkyBlue.Name = "pan_LigthSkyBlue";
             this.pan_LigthSkyBlue.Size = new System.Drawing.Size(50, 50);
@@ -150,8 +151,8 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TrackBar Tb_opacity;
         private System.Windows.Forms.Button Btn_closeChangeColor;
-        private System.Windows.Forms.Panel pan_Violet;
-        private System.Windows.Forms.Panel pan_GreenYellow;
+        private System.Windows.Forms.Panel pan_Thistle;
+        private System.Windows.Forms.Panel pan_LightGreen;
         private System.Windows.Forms.Panel pan_LigthSkyBlue;
         private System.Windows.Forms.Panel pan_Khaki;
         private System.Windows.Forms.Label Lbl_opacity;

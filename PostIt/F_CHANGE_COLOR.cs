@@ -66,22 +66,22 @@ namespace PostIt
 
         private void pan_Khaki_Click(object sender, EventArgs e)
         {
-            UpdateColor(idPostit, pan_Khaki);
+            ActionClicPanel(sender);
         }
 
         private void pan_LigthSkyBlue_Click(object sender, EventArgs e)
         {
-            UpdateColor(idPostit, pan_LigthSkyBlue);
+            ActionClicPanel(sender);
         }
 
-        private void pan_GreenYellow_Click(object sender, EventArgs e)
+        private void pan_LightGreen_Click(object sender, EventArgs e)
         {
-            UpdateColor(idPostit, pan_GreenYellow);
+            ActionClicPanel(sender);
         }
 
-        private void pan_Violet_Click(object sender, EventArgs e)
+        private void pan_Thistle_Click(object sender, EventArgs e)
         {
-            UpdateColor(idPostit, pan_Violet);
+            ActionClicPanel(sender);
         }
 
         private void trackBar1_ValueChanged_1(object sender, EventArgs e)
@@ -94,11 +94,55 @@ namespace PostIt
         {
             Lbl_opacity.Text = "Opacity : " + nOpacity;
             Tb_opacity.Value = Convert.ToInt32(nOpacity * 10);
+
+            SelectPanel(nomColor);
+
         }
 
         private void Btn_closeChangeColor_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SelectPanel(Color c)
+        {
+
+            switch (c.Name)
+            {
+                case "Khaki":
+                    pan_Khaki.BorderStyle = BorderStyle.FixedSingle;
+                    pan_LigthSkyBlue.BorderStyle = BorderStyle.None;
+                    pan_LightGreen.BorderStyle = BorderStyle.None;
+                    pan_Thistle.BorderStyle = BorderStyle.None;
+                    break;
+                case "LightSkyBlue":
+                    pan_LigthSkyBlue.BorderStyle = BorderStyle.FixedSingle;
+                    pan_Khaki.BorderStyle = BorderStyle.None;
+                    pan_LightGreen.BorderStyle = BorderStyle.None;
+                    pan_Thistle.BorderStyle = BorderStyle.None;
+                    break;
+                case "LightGreen":
+                    pan_LightGreen.BorderStyle = BorderStyle.FixedSingle;
+                    pan_Khaki.BorderStyle = BorderStyle.None;
+                    pan_LigthSkyBlue.BorderStyle = BorderStyle.None;
+                    pan_Thistle.BorderStyle = BorderStyle.None;
+                    break;
+                case "Thistle":
+                    pan_Thistle.BorderStyle = BorderStyle.FixedSingle;
+                    pan_Khaki.BorderStyle = BorderStyle.None;
+                    pan_LigthSkyBlue.BorderStyle = BorderStyle.None;
+                    pan_LightGreen.BorderStyle = BorderStyle.None;
+                    break;
+            }
+        }
+
+        // Methode qui update la couleur dans le xml et séléctionne le bon panel
+        // en envoyant directement le bon panel en paramètre.
+        private void ActionClicPanel(object sender)
+        {
+            Panel panelSender = (Panel)sender;
+            UpdateColor(idPostit, panelSender);
+            SelectPanel(Color.FromName(panelSender.BackColor.Name));
         }
     }
 }
