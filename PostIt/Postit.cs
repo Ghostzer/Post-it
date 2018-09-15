@@ -26,6 +26,8 @@ namespace PostIt
         private double _opacity { get; set; }
         private bool newPostit;
 
+        List<int> listId = new List<int>();
+
         //Const pour load les post-it déjà existant
         public Postit(int id, string contenu, int posX, int posY, string color, double opacity)
         {
@@ -209,11 +211,37 @@ namespace PostIt
             Random rnd = new Random();
             int genId = rnd.Next(1, 9999);
 
-            //TODO : Check si ID existe déjà
+            bool isUnique = true;
+
+            ListAllId();
+
+            while (isUnique)
+            {
+
+                genId = rnd.Next(1, 9999);
+
+                foreach (var l in listId)
+                {
+                    if (genId != l)
+                    {
+                        isUnique = false;
+                    } else
+                    {
+                        isUnique = true;
+                        break;
+                    }
+                }
+
+            }
+
+            this._id = genId;
+        }
+
+        private void ListAllId()
+        {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("conf.xml");
-            List<int> listId = new List<int>();
-
+            
             //Remplissage de tous les ID existants dans une liste
             foreach (XmlNode node in xmlDoc.SelectNodes("//postit"))
             {
@@ -222,10 +250,6 @@ namespace PostIt
                     listId.Add(Convert.ToInt32(node.Attributes["id"].Value));
                 }
             }
-
-            //TODO Si l'id généré existe, en re-générer un... et re-check... à voir.
-
-            this._id = genId;
         }
 
 
