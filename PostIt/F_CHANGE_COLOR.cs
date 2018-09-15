@@ -107,6 +107,8 @@ namespace PostIt
         private void SelectPanel(Color c)
         {
 
+            //Todo refactoring, sans "écrit en dur"
+
             switch (c.Name)
             {
                 case "Khaki":
