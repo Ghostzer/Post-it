@@ -134,29 +134,8 @@ namespace PostIt
             genForm.Deactivate += (sender, e) => UpdateXml(_id, TxtContenu.Text);
 
 
-            //Click menu
+            //Rigth click menu on Postit
             ContextMenuStrip clickMenu = new ContextMenuStrip();
-
-            // Ajout d'un item "Fermer"
-            ToolStripItem itemFermer = clickMenu.Items.Add("Fermer (sans la supprimer)");
-            itemFermer.Click += (_, args) =>
-            {
-                genForm.Close();
-            };
-
-            // Supprimer postit
-            ToolStripItem itemSupprimer = clickMenu.Items.Add("Supprimer");
-            itemSupprimer.Click += (_, args) =>
-            {
-                DialogResult result = MessageBox.Show("Etes-vous certain de vouloir supprimer ce post-it ?", "Suppression...", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    DeletePostItToXml(_id.ToString());
-                    genForm.Close();
-                }
-               
-                
-            };
 
             ToolStripItem itemChangecolor = clickMenu.Items.Add("Changer la couleur");
             itemChangecolor.Click += (_, args) =>
@@ -171,7 +150,28 @@ namespace PostIt
 
             };
 
-            
+            // Ajout d'un item "Fermer"
+            ToolStripItem itemFermer = clickMenu.Items.Add("Fermer (sans supprimer)");
+            itemFermer.Click += (_, args) =>
+            {
+                genForm.Close();
+            };
+
+            //Separator
+            ToolStripItem itemSeparator = clickMenu.Items.Add("-");
+
+            // Supprimer postit
+            ToolStripItem itemSupprimer = clickMenu.Items.Add("Supprimer");
+            itemSupprimer.Click += (_, args) =>
+            {
+                DialogResult result = MessageBox.Show("Etes-vous certain de vouloir supprimer ce post-it ?", "Suppression...", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    DeletePostItToXml(_id.ToString());
+                    genForm.Close();
+                } 
+            };
+
 
             //Ajout d'un event "ResizeEnd" permettant l'update de la position dans le fichier xml
             // Dés qu'on déplace la fenêtre. Bizarrement ça fonctionne sur cet event.
