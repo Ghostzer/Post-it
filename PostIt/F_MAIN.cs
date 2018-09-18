@@ -33,6 +33,12 @@ namespace PostIt
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             ShowInTaskbar = false;
 
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon1.Visible = true;
+            }
+
         }
 
         public void RefreshPostit()
