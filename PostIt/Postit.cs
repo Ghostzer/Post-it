@@ -215,21 +215,29 @@ namespace PostIt
 
             ListAllId();
 
-            while (isUnique)
+            if (listId.Count > 0)
             {
 
-                genId = rnd.Next(1, 9999);
 
-                foreach (var l in listId)
+
+                while (isUnique)
                 {
-                    if (genId != l)
+
+                    genId = rnd.Next(1, 9999);
+
+                    foreach (var l in listId)
                     {
-                        isUnique = false;
-                    } else
-                    {
-                        isUnique = true;
-                        break;
+                        if (genId != l)
+                        {
+                            isUnique = false;
+                        }
+                        else
+                        {
+                            isUnique = true;
+                            break;
+                        }
                     }
+
                 }
 
             }
