@@ -42,6 +42,8 @@ namespace PostIt
             if (!File.Exists(@"conf.xml"))
             {
 
+                notifyIcon1.ShowBalloonTip(1000, "Ajoutez une note !", "Cliquez-droit et ajoutez une note !", ToolTipIcon.None);
+
                 new XDocument(
                     new XElement("conf"
                     )
